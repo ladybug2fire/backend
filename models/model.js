@@ -4,6 +4,7 @@ var mongoose = require('../config/db'),
 var modelSchema = new Schema({
     modelid: String,
     name: String, 
+    createTime: Date,
 });
 
 module.exports = mongoose.model('model',modelSchema);
