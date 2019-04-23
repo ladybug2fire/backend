@@ -3,7 +3,7 @@ var mongoose = require('../config/db'),
 
 var schemeSchema = new Schema({
     modelid: String,//模型id
-    schemes: String,
+    data: String,
 });
 
 module.exports = mongoose.model('scheme',schemeSchema);
