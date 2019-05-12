@@ -46,6 +46,27 @@ router.get("/get", async function(req, res) {
   }
 });
 
+router.get('/del', async function(req, res){
+  const id = req.query.id;
+  try {
+    await Promise.all([
+      TreeData.remove({modelid: id}),
+      Model.remove({modelid: id}),
+      Scheme.remove({modelid: id}),
+      Matrix.remove({modelid: id}), 
+    ])
+    res.json({
+      code: 200,
+    });
+  }catch(err){
+    console.log(err)
+    res.json({
+      code: 500,
+      msg: err
+    });
+  }
+})
+
 router.post("/save", async function(req, res) {
   const body = req.body;
   const isFind = await Model.findOne({ modelid: body.modelid });
